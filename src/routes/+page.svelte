@@ -46,10 +46,11 @@
   import SceneCollectionSelect from '../SceneCollectionSelect.svelte'
   import AudioMixer from '../AudioMixer.svelte'
   import SceneItemsPanel from '../SceneItemsPanel.svelte'
+  import { base } from '$app/paths'
 
   onMount(async () => {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js')
+      navigator.serviceWorker.register(`${base}/service-worker.js`)
     }
 
     await checkQrScannerSupport()
@@ -584,7 +585,7 @@
 
 <nav class="navbar is-primary is-fixed-top" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item is-size-4 has-text-weight-bold" href="/">
+    <a class="navbar-item is-size-4 has-text-weight-bold" href={base || '/'}>
       <img src="favicon.png" alt="OBS-web" class="rotate" /></a
     >
 

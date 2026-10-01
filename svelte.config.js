@@ -7,6 +7,9 @@ import { defineConfig } from 'vite'
 const config = {
   preprocess: vitePreprocess(),
   kit: {
+    paths: {
+      base: '/obs-console'
+    },
     adapter: adapter({
       pages: 'public',
       assets: 'public',

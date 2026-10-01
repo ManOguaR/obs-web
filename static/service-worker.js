@@ -1,7 +1,8 @@
 const CACHE_NAME = 'offline'
+const APP_ROOT = self.registration.scope
 
 // Customize this with a different URL if needed.
-const cacheFiles = ['/']
+const cacheFiles = [APP_ROOT]
 
 const shouldHandle = (request) => {
   if (request.method !== 'GET') return false
@@ -31,7 +32,7 @@ const networkFirst = async (event) => {
     if (cachedResponse) return cachedResponse
 
     if (request.mode === 'navigate') {
-      const fallback = await cache.match('/')
+      const fallback = await cache.match(APP_ROOT)
       if (fallback) return fallback
     }
 
